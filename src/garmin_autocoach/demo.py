@@ -13,7 +13,7 @@ def demo_snapshot(as_of: dt.date | None = None, seed: int = 7, scenario: str = "
     """scenario: steady | tired | fresh"""
     as_of = as_of or dt.date.today()
     rng = random.Random(seed)
-    zones = HRZones(z1=103, z2=123, z3=144, z4=164, z5=185, max_hr=205, lthr=186)
+    zones = HRZones(z1=110, z2=130, z3=150, z4=165, z5=180, max_hr=195, lthr=172)
     runs: list[RunSummary] = []
     weekly_km = [28, 31, 33, 30, 12]  # 4 complete weeks oldest -> newest, then the partial current week
     end = last_complete_monday(as_of)

@@ -5,7 +5,7 @@ from garmin_autocoach.garmin_writer import GarminWriter, load_applied, to_payloa
 from garmin_autocoach.models import HRZones, Workout
 from garmin_autocoach.planner import RulePlanner
 
-ZONES = HRZones(z1=103, z2=123, z3=144, z4=164, z5=185, max_hr=205)
+ZONES = HRZones(z1=110, z2=130, z3=150, z4=165, z5=180, max_hr=195)
 DAY = dt.date(2026, 11, 11)
 
 
@@ -29,7 +29,7 @@ def test_easy_run_payload_shape():
     assert s["endCondition"] == {"conditionTypeId": 2, "conditionTypeKey": "time"}
     assert s["endConditionValue"] == 2400.0
     assert s["targetType"] == {"workoutTargetTypeId": 4, "workoutTargetTypeKey": "heart.rate.zone"}
-    assert (s["targetValueOne"], s["targetValueTwo"]) == (123.0, 143.0)
+    assert (s["targetValueOne"], s["targetValueTwo"]) == (130.0, 149.0)
 
 
 def test_named_zone_when_no_zone_config():
@@ -62,7 +62,7 @@ def test_tempo_payload():
     steps = to_payload(w, ZONES)["workoutSegments"][0]["workoutSteps"]
     assert [s["stepType"]["stepTypeKey"] for s in steps] == ["warmup", "interval", "cooldown"]
     assert steps[1]["endConditionValue"] == 25 * 60.0
-    assert (steps[1]["targetValueOne"], steps[1]["targetValueTwo"]) == (144.0, 163.0)
+    assert (steps[1]["targetValueOne"], steps[1]["targetValueTwo"]) == (150.0, 164.0)
 
 
 def test_rest_has_no_payload():

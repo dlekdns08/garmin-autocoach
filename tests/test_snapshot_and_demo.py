@@ -32,9 +32,9 @@ def test_weekly_stats_and_acwr():
 
 def test_parse_hr_zones_prefers_running():
     raw = [{"sport": "DEFAULT", "zone1Floor": 100, "zone2Floor": 120, "zone3Floor": 140, "zone4Floor": 160, "zone5Floor": 180, "maxHeartRateUsed": 200},
-           {"sport": "RUNNING", "zone1Floor": 103, "zone2Floor": 123, "zone3Floor": 144, "zone4Floor": 164, "zone5Floor": 185, "maxHeartRateUsed": 205}]
+           {"sport": "RUNNING", "zone1Floor": 110, "zone2Floor": 130, "zone3Floor": 150, "zone4Floor": 165, "zone5Floor": 180, "maxHeartRateUsed": 195}]
     z = parse_hr_zones(raw)
-    assert z.z2 == 123 and z.range(2) == (123, 143) and z.range(5) == (185, 205)
+    assert z.z2 == 130 and z.range(2) == (130, 149) and z.range(5) == (180, 195)
     assert parse_hr_zones(None) is None
 
 
